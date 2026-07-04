@@ -56,7 +56,7 @@ class Settings
         $check->execute([$key]);
 
         if ($check->fetchColumn() == 0) {
-            $pdo->prepare("INSERT INTO `settings` (key_name, value_text) VALUES (?, ?)")
+            $pdo->prepare("INSERT IGNORE INTO `settings` (key_name, value_text) VALUES (?, ?)")
                 ->execute([$key, $default]);
         }
     }

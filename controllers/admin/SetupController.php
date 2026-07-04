@@ -167,7 +167,7 @@ class SetupController
             'footer_twitter' => 'https://twitter.com',
             'footer_linkedin' => 'https://linkedin.com',
         ];
-        $stmt = $pdo->prepare("INSERT INTO `settings` (key_name, value_text) VALUES (?, ?)");
+        $stmt = $pdo->prepare("INSERT IGNORE INTO `settings` (key_name, value_text) VALUES (?, ?)");
         foreach ($defaults as $k => $v) { $stmt->execute([$k, $v]); }
 
         $services = [
