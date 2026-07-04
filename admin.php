@@ -15,10 +15,6 @@ require_once __DIR__ . '/models/Testimonial.php';
 require_once __DIR__ . '/models/ContactMessage.php';
 require_once __DIR__ . '/models/User.php';
 
-// Conectar y migrar
-$pdo = Database::connect();
-Migration::runAll($pdo);
-
 // Enrutar
 $route  = preg_replace('/[^a-zA-Z0-9_]/', '', $_GET['route'] ?? 'dashboard');
 $action = preg_replace('/[^a-zA-Z0-9_]/', '', $_GET['action'] ?? 'index');
@@ -41,6 +37,12 @@ if (!isset($map[$route])) {
     http_response_code(404);
     echo 'Página no encontrada.';
     exit;
+}
+
+// Conectar y migrar (solo para rutas que necesitan BD)
+if ($route !== 'setup') {
+    $pdo = Database::connect();
+    Migration::runAll($pdo);
 }
 
 require_once __DIR__ . '/controllers/admin/' . $map[$route] . '.php';
