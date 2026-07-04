@@ -1,0 +1,123 @@
+/* ==========================================================================
+   CONTENT SECTIONS: Headers, About, Services, Benefits, Mission/Vision, Values
+   ========================================================================== */
+
+/* Section Headers */
+.section-header { max-width: 700px; margin: 0 auto 60px auto; }
+
+.section-tag {
+    display: inline-block; font-size: 12px; text-transform: uppercase;
+    letter-spacing: 1.5px; color: var(--primary); font-weight: 700;
+    margin-bottom: 12px; background-color: rgba(37, 99, 235, 0.08);
+    padding: 6px 12px; border-radius: 20px; font-family: var(--font-heading);
+}
+
+.section-title { font-size: 36px; margin-bottom: 20px; color: var(--dark); letter-spacing: -0.5px; }
+.section-desc { font-size: 16px; color: var(--text-muted); }
+
+/* About Section */
+.about-text { display: flex; flex-direction: column; justify-content: center; }
+
+.about-p.main-p {
+    font-size: 17px; font-weight: 500; line-height: 1.7;
+    margin-bottom: 20px; color: var(--dark-muted);
+}
+
+.about-p.text-muted { font-size: 15px; color: var(--text-muted); margin-bottom: 30px; }
+
+.about-stats-mini { display: flex; gap: 40px; }
+.stat-mini-item { display: flex; flex-direction: column; }
+.stat-num { font-family: var(--font-heading); font-size: 32px; font-weight: 800; color: var(--primary); }
+.stat-lbl { font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--text-muted); margin-top: 4px; }
+
+.about-image-wrapper { display: flex; align-items: center; justify-content: center; }
+.image-box { position: relative; width: 100%; max-width: 480px; }
+.about-img { width: 100%; height: auto; border-radius: var(--radius-md); box-shadow: var(--shadow-lg); display: block; }
+
+.experience-badge {
+    position: absolute; bottom: -20px; left: -20px;
+    background-color: var(--teal); color: var(--white);
+    padding: 16px 24px; border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 12px;
+}
+.experience-badge i { width: 24px; height: 24px; }
+.experience-badge span {
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;
+}
+
+/* Services */
+.service-card {
+    background-color: var(--white); padding: 40px; border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm); border: 1px solid rgba(226, 232, 240, 0.7);
+    transition: var(--transition-smooth); display: flex; flex-direction: column; height: 100%;
+}
+.service-card:hover {
+    transform: translateY(-5px); box-shadow: var(--shadow-premium);
+    border-color: rgba(37, 99, 235, 0.15);
+}
+.card-icon-box {
+    width: 56px; height: 56px; background-color: rgba(37, 99, 235, 0.08);
+    color: var(--primary); border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; margin-bottom: 24px;
+    transition: var(--transition-smooth);
+}
+.service-card:hover .card-icon-box { background-color: var(--primary); color: var(--white); }
+.card-title { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+.card-text { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+/* Benefits */
+.benefit-block { text-align: center; padding: 20px; transition: var(--transition-smooth); }
+.benefit-icon-box {
+    width: 64px; height: 64px; background-color: rgba(13, 148, 136, 0.08);
+    color: var(--teal); border-radius: var(--radius-sm); display: flex;
+    align-items: center; justify-content: center; margin: 0 auto 20px auto;
+    transition: var(--transition-smooth);
+}
+.benefit-block:hover .benefit-icon-box {
+    transform: rotate(5deg) scale(1.05); background-color: var(--teal); color: var(--white);
+}
+.benefit-title { font-size: 18px; font-weight: 600; margin-bottom: 12px; }
+.benefit-desc { font-size: 13.5px; line-height: 1.5; }
+
+/* Commitment Banner */
+.commitment-section {
+    padding: 100px 0; position: relative;
+    background: radial-gradient(circle at 80% 20%, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 1) 100%);
+}
+.text-teal { color: var(--teal); }
+.text-white { color: var(--white) !important; }
+.commitment-p { font-size: 18px; max-width: 800px; margin: 20px auto 30px auto; line-height: 1.7; opacity: 0.85; }
+.mt-md { margin-top: 24px; }
+
+/* Mission & Vision */
+.mv-card {
+    background-color: var(--white); border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm); border: 1px solid var(--border);
+    padding: 50px; transition: var(--transition-smooth);
+    display: flex; flex-direction: column; position: relative; overflow: hidden;
+}
+.mv-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    height: 4px; width: 100%; background-color: var(--primary);
+}
+.mv-card:last-of-type::before { background-color: var(--teal); }
+.mv-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.mv-icon-box {
+    width: 60px; height: 60px; background-color: rgba(37, 99, 235, 0.08);
+    color: var(--primary); border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; margin-bottom: 24px;
+}
+.mv-icon-box.vision { background-color: rgba(13, 148, 136, 0.08); color: var(--teal); }
+.mv-title { font-size: 24px; margin-bottom: 16px; }
+.mv-text { font-size: 15px; line-height: 1.7; }
+
+/* Values */
+.value-card {
+    background-color: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 24px; display: flex;
+    align-items: center; gap: 16px; transition: var(--transition-smooth);
+}
+.value-card:hover { border-color: var(--teal); background-color: rgba(13, 148, 136, 0.02); transform: scale(1.02); }
+.value-check { color: var(--teal); display: flex; align-items: center; justify-content: center; }
+.value-title { font-size: 16px; font-weight: 600; color: var(--dark); }

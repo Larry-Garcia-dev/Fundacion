@@ -1,0 +1,101 @@
+/* ==========================================================================
+   GALLERY SLIDESHOW
+   ========================================================================== */
+
+.gallery-slideshow-container {
+    position: relative;
+    max-width: 1000px;
+    height: 500px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    background-color: #000;
+}
+
+.gallery-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    z-index: 1;
+}
+
+.gallery-slide.active { opacity: 1; z-index: 2; }
+
+.gallery-slide img { width: 100%; height: 100%; object-fit: cover; }
+
+.slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0) 100%);
+    color: var(--white);
+    padding: 30px 40px;
+    box-sizing: border-box;
+    z-index: 3;
+}
+
+.slide-caption p {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Navigation Controls */
+.slide-nav {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 16px;
+    color: var(--white);
+    font-weight: bold;
+    font-size: 20px;
+    background-color: rgba(15, 23, 42, 0.4);
+    border: none;
+    border-radius: 0 4px 4px 0;
+    user-select: none;
+    z-index: 10;
+    transition: var(--transition-smooth);
+}
+
+.slide-nav.next { right: 0; border-radius: 4px 0 0 4px; }
+
+.slide-nav:hover {
+    background-color: var(--primary);
+    transform: translateY(-50%) scale(1.05);
+}
+
+/* Dot Indicators */
+.slide-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 8px;
+}
+
+.slide-dots .dot {
+    cursor: pointer;
+    height: 10px;
+    width: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    display: inline-block;
+    transition: var(--transition-smooth);
+}
+
+.slide-dots .dot.active,
+.slide-dots .dot:hover {
+    background-color: var(--white);
+    transform: scale(1.2);
+}

@@ -1,0 +1,119 @@
+/* ==========================================================================
+   HEADER & NAVIGATION
+   ========================================================================== */
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+    transition: var(--transition-smooth);
+    height: 100px;
+}
+
+.site-header.scrolled {
+    height: 85px;
+    background-color: var(--white);
+    box-shadow: var(--shadow-sm);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Logo */
+.logo { display: flex; flex-direction: column; text-decoration: none; }
+
+.logo-bold {
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--dark);
+    line-height: 1.2;
+}
+
+.logo-sub {
+    font-size: 10px;
+    color: var(--teal);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.logo-brand-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.logo-img { height: 72px; width: auto; border-radius: var(--radius-sm); }
+
+.logo-text-box { display: flex; flex-direction: column; }
+
+/* Navigation */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--dark);
+    cursor: pointer;
+}
+
+.nav-menu ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-menu a.nav-link {
+    color: var(--text-main);
+    font-weight: 500;
+    font-size: 14px;
+    padding: 8px 0;
+    position: relative;
+    white-space: nowrap;
+}
+
+.nav-menu a.nav-link:hover,
+.nav-menu a.nav-link.active { color: var(--primary); }
+
+.nav-menu a.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: var(--transition-smooth);
+}
+
+.nav-menu a.nav-link:hover::after,
+.nav-menu a.nav-link.active::after { width: 100%; }
+
+/* Nav CTA Button */
+.btn-primary-nav {
+    background-color: var(--primary);
+    color: var(--white) !important;
+    padding: 8px 18px;
+    font-size: 14px;
+    border-radius: 6px;
+}
+
+.btn-primary-nav:hover {
+    background-color: var(--primary-hover);
+    transform: scale(1.03);
+}
