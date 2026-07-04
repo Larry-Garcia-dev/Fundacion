@@ -19,6 +19,13 @@ require_once __DIR__ . '/models/User.php';
 $route  = preg_replace('/[^a-zA-Z0-9_]/', '', $_GET['route'] ?? 'dashboard');
 $action = preg_replace('/[^a-zA-Z0-9_]/', '', $_GET['action'] ?? 'index');
 
+// Logout (no necesita BD ni controller)
+if ($route === 'logout') {
+    Auth::logout();
+    header('Location: /admin.php?route=login');
+    exit;
+}
+
 $map = [
     'dashboard'    => 'DashboardController',
     'login'        => 'LoginController',
