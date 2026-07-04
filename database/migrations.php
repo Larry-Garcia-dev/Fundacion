@@ -104,26 +104,23 @@ class Migration
         if ($count === 0) {
             $hash = password_hash('admin123', PASSWORD_DEFAULT);
             $stmt = $pdo->prepare(
-                "INSERT INTO `users` (`username`, `email`, `password`) VALUES (:u, :e, :p)"
+                "INSERT IGNORE INTO `users` (`username`, `email`, `password`) VALUES (:u, :e, :p)"
             );
             $stmt->execute([':u' => 'admin', ':e' => 'admin@fundacionvisiondefuturo.org', ':p' => $hash]);
         }
 
-        // Seed default settings
-        $count = (int) $pdo->query("SELECT COUNT(*) FROM `settings`")->fetchColumn();
-        if ($count === 0) {
-            $defaults = self::defaultSettings();
-            $stmt = $pdo->prepare("INSERT INTO `settings` (`key_name`, `value_text`) VALUES (:k, :v)");
-            foreach ($defaults as $key => $value) {
-                $stmt->execute([':k' => $key, ':v' => $value]);
-            }
+        // Seed default settings (skip any that already exist)
+        $defaults = self::defaultSettings();
+        $stmt = $pdo->prepare("INSERT IGNORE INTO `settings` (`key_name`, `value_text`) VALUES (:k, :v)");
+        foreach ($defaults as $key => $value) {
+            $stmt->execute([':k' => $key, ':v' => $value]);
         }
     }
 
     private static function ensureDefaultSettings(PDO $pdo): void
     {
         $stmt = $pdo->prepare("SELECT COUNT(*) FROM `settings` WHERE `key_name` = :k");
-        $insert = $pdo->prepare("INSERT INTO `settings` (`key_name`, `value_text`) VALUES (:k, :v)");
+        $insert = $pdo->prepare("INSERT IGNORE INTO `settings` (`key_name`, `value_text`) VALUES (:k, :v)");
 
         foreach (self::defaultSettings() as $key => $value) {
             $stmt->execute([':k' => $key]);
