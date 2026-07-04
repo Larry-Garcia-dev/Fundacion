@@ -29,7 +29,7 @@ ob_start();
                     <div style="font-size:11px;color:var(--text-muted);font-weight:normal;"><?= htmlspecialchars($msg['email']) ?></div>
                 </td>
                 <td>
-                    <a href="/admin.php?route=messages&action=view&id=<?= $msg['id'] ?>" style="color:inherit;text-decoration:none;display:block;max-width:450px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><?= htmlspecialchars($msg['message']) ?></a>
+                    <a href="/admin.php?route=messages&action=edit&do=view&id=<?= $msg['id'] ?>" style="color:inherit;text-decoration:none;display:block;max-width:450px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><?= htmlspecialchars($msg['message']) ?></a>
                 </td>
                 <td style="font-size:12px;color:var(--text-muted);"><?= date('d/m/Y H:i', strtotime($msg['created_at'])) ?></td>
                 <td>
@@ -39,9 +39,9 @@ ob_start();
                 </td>
                 <td>
                     <div class="table-actions" style="justify-content:center;">
-                        <a href="/admin.php?route=messages&action=view&id=<?= $msg['id'] ?>" class="btn-icon edit" title="Leer"><i data-lucide="eye" style="width:15px;height:15px;"></i></a>
+                        <a href="/admin.php?route=messages&action=edit&do=view&id=<?= $msg['id'] ?>" class="btn-icon edit" title="Leer"><i data-lucide="eye" style="width:15px;height:15px;"></i></a>
                         <?php if ($msg['status'] !== 'archived'): ?>
-                            <a href="/admin.php?route=messages&action=archive&id=<?= $msg['id'] ?>&filter=<?= $filter ?>" class="btn-icon" title="Archivar" style="color:var(--secondary);"><i data-lucide="archive" style="width:15px;height:15px;"></i></a>
+                            <a href="/admin.php?route=messages&action=edit&do=archive&id=<?= $msg['id'] ?>&filter=<?= $filter ?>" class="btn-icon" title="Archivar" style="color:var(--secondary);"><i data-lucide="archive" style="width:15px;height:15px;"></i></a>
                         <?php endif; ?>
                         <a href="/admin.php?route=messages&action=delete&id=<?= $msg['id'] ?>&filter=<?= $filter ?>" class="btn-icon delete" title="Eliminar" onclick="return confirm('¿Eliminar permanentemente?');"><i data-lucide="trash-2" style="width:15px;height:15px;"></i></a>
                     </div>

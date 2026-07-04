@@ -71,7 +71,7 @@ ob_start();
     </div>
 
     <div>
-        <a href="mailto:<?= htmlspecialchars($message['email'] ?? '') ?>?subject=Contacto: Fundación Visión de Futuro" class="btn btn-primary">
+        <a href="https://mail.google.com/mail/?view=cm&to=<?= urlencode($message['email'] ?? '') ?>&su=<?= urlencode('Re: Contacto – ' . ($message['name'] ?? '')) ?>&body=<?= urlencode("\n\n---\nMensaje original de " . ($message['name'] ?? '') . ":\n" . ($message['message'] ?? '')) ?>" target="_blank" rel="noopener" class="btn btn-primary">
             <i data-lucide="reply"></i> Responder por Correo Electrónico
         </a>
     </div>

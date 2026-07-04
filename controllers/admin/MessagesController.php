@@ -22,7 +22,7 @@ class MessagesController
     public function editAction(): void
     {
         $id     = (int) ($_GET['id'] ?? 0);
-        $action = $_GET['action'] ?? '';
+        $action = $_GET['do'] ?? '';
 
         if ($id > 0) {
             if ($action === 'archive') {
@@ -32,7 +32,7 @@ class MessagesController
             } elseif ($action === 'view') {
                 $msg = $this->model->find($id);
                 if ($msg && $msg['status'] === 'unread') {
-                    $this->model->update($id, ['status' => 'read']);
+                    $this->model->markRead($id);
                 }
 
                 View::render('admin/message_detail', [
